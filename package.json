@@ -1,0 +1,40 @@
+{
+  "version": "1.0.0",
+  "keywords": [
+    "textlintrule"
+  ],
+  "main": "lib/index.js",
+  "files": [
+    "lib/",
+    "src/"
+  ],
+  "scripts": {
+    "test": "textlint-scripts test",
+    "build": "textlint-scripts build",
+    "prepublish": "npm run --if-present build",
+    "watch": "textlint-scripts build --watch"
+  },
+  "devDependencies": {
+    "@textlint/types": "^14.0.4",
+    "@types/node": "^20.14.9",
+    "textlint-scripts": "^14.0.4",
+    "textlint-tester": "^14.0.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "name": "textlint-rule-numeral-systems",
+  "description": "Unify the usage of Arabic, Arabic-Indic and Farsi numbers in a single text",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aborazmeh/textlint-rule-numeral-systems.git"
+  },
+  "author": "aborazmeh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aborazmeh/textlint-rule-numeral-systems/issues"
+  },
+  "homepage": "https://github.com/aborazmeh/textlint-rule-numeral-systems#readme"
+}
