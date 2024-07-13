@@ -9,15 +9,15 @@ tester.run("rule", rule, {
         {
             text: "Call me on ٥٥٥-٤٣١",
             options: {
-                default_numbers: "indic"
-            }
+                default_numbers: "indic",
+            },
         },
         {
             text: "My number in Persian numbers is ۵۵۵-۴۳۲",
             options: {
-                default_numbers: "persian"
-            }
-        }
+                default_numbers: "persian",
+            },
+        },
     ],
     invalid: [
         {
@@ -26,13 +26,13 @@ tester.run("rule", rule, {
             errors: [
                 {
                     message: "Found indic numbers.",
-                    range: [6, 7]
+                    range: [6, 7],
                 },
                 {
                     message: "Found indic numbers.",
-                    range: [7, 8]
+                    range: [7, 8],
                 },
-            ]
+            ],
         },
         {
             text: "Call ۴۴۶ for more information",
@@ -40,51 +40,51 @@ tester.run("rule", rule, {
             errors: [
                 {
                     message: "Found persian numbers.",
-                    range: [5, 6]
+                    range: [5, 6],
                 },
                 {
                     message: "Found persian numbers.",
-                    range: [6, 7]
+                    range: [6, 7],
                 },
                 {
                     message: "Found persian numbers.",
-                    range: [7, 8]
+                    range: [7, 8],
                 },
-            ]
+            ],
         },
         {
             text: "binaries are 1s and 0s",
             output: "binaries are ١s and ٠s",
             options: {
-                default_numbers: "indic"
+                default_numbers: "indic",
             },
             errors: [
                 {
                     message: "Found arabic numbers.",
-                    range: [13, 14]
+                    range: [13, 14],
                 },
                 {
                     message: "Found arabic numbers.",
-                    range: [20, 21]
+                    range: [20, 21],
                 },
-            ]
+            ],
         },
         {
             text: "binaries are 1s and 0s",
             output: "binaries are ۱s and ۰s",
             options: {
-                default_numbers: "persian"
+                default_numbers: "persian",
             },
             errors: [
                 {
                     message: "Found arabic numbers.",
-                    range: [13, 14]
+                    range: [13, 14],
                 },
                 {
                     message: "Found arabic numbers.",
-                    range: [20, 21]
+                    range: [20, 21],
                 },
-            ]
+            ],
         },
-    ]
+    ],
 });

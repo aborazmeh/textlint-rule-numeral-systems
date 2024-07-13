@@ -1,73 +1,75 @@
 import type { TextlintRuleModule } from "@textlint/types";
 
 export interface Options {
-    default_numbers?: 'arabic' | 'indic' | 'persian';
+    default_numbers?: "arabic" | "indic" | "persian";
 }
 
 const numbers = [
     {
         arabic: "0",
         indic: "٠",
-        persian: "۰"
+        persian: "۰",
     },
     {
         arabic: "1",
         indic: "١",
-        persian: "۱"
+        persian: "۱",
     },
     {
         arabic: "2",
         indic: "٢",
-        persian: "۲"
+        persian: "۲",
     },
     {
         arabic: "3",
         indic: "٣",
-        persian: "۳"
+        persian: "۳",
     },
     {
         arabic: "4",
         indic: "٤",
-        persian: "۴"
+        persian: "۴",
     },
     {
         arabic: "5",
         indic: "٥",
-        persian: "۵"
+        persian: "۵",
     },
     {
         arabic: "6",
         indic: "٦",
-        persian: "۶"
+        persian: "۶",
     },
     {
         arabic: "7",
         indic: "٧",
-        persian: "۷"
+        persian: "۷",
     },
     {
         arabic: "8",
         indic: "٨",
-        persian: "۸"
+        persian: "۸",
     },
     {
         arabic: "9",
         indic: "٩",
-        persian: "۹"
-    }
+        persian: "۹",
+    },
 ];
 
 const report: TextlintRuleModule<Options> = (context, options = {}) => {
-    const replaceTo = options.default_numbers ?? 'arabic';
-    const toReplace = ['indic', 'arabic', 'persian'].filter(o => o !== replaceTo);
+    const replaceTo = options.default_numbers ?? "arabic";
+    const toReplace = ["indic", "arabic", "persian"].filter((o) => o !== replaceTo);
+
     const { Syntax, RuleError, fixer, report, getSource, locator } = context;
     return {
-        [Syntax.Str](node) { // "Str" node
+        [Syntax.Str](node) {
+            // "Str" node
             const text = getSource(node); // Get text
 
-            numbers.forEach(n => {
-                toReplace.forEach((numeric_system:string) => {
-                    const matches = text.matchAll(new RegExp(n[numeric_system as keyof typeof n], 'g'));
+            numbers.forEach((n) => {
+                toReplace.forEach((numeric_system: string) => {
+                    const matches = text.matchAll(new RegExp(n[numeric_system as keyof typeof n], "g"));
                     for (const match of matches) {
                         const index = match.index ?? 0;
                         const matchRange = [index, index + match[0].length] as const;
@@ -78,13 +80,13 @@ const report: TextlintRuleModule<Options> = (context, options = {}) => {
                         });
                         report(node, ruleError);
                     }
-                })
-            })
-        }
-    }
+                });
+            });
+        },
+    };
 };
 
 export default {
     linter: report,
-    fixer: report
+    fixer: report,
 };
